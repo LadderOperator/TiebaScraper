@@ -36,7 +36,7 @@ def extract_info(posts:list, ignore_top:bool = True)->dict:
         post_info = {}
         
         post_title = post.find(attrs={"class":"ti_title"})
-        if len(post_title.find_all("span"))>1:
+        if len(post_title.find_all("span"))>1 and 'class' in post_title.span.attrs:
             post_info["type"] = post_type[post_title.span["class"][-1]]
             if ignore_top == True and post_info["type"] == "置顶":
                 continue
